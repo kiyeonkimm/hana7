@@ -1,7 +1,5 @@
 ppp
-<<<<<<< HEAD
 br11
 br11
-=======
 br22
->>>>>>> br22
+other working***

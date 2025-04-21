@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      .border {
+        border: 1px solid red;
+      }
+      .m-5 {
+        margin: 5rem;
+      }
+      .p-5 {
+        padding: 5rem;
+      }
+    </style>
+  </head>
+  <body style="margin-left: 5rem">
+    <h1>Title</h1>
+    <form name="frm" id="frm">
+      <div id="div" class="border p-5">
+        <button id="btn" type="submit">Submit</button>
+      </div>
+    </form>
+  </body>
+  <script>
+    const frm = document.getElementsByName("frm")[0];
+    frm.addEventListener("click", () => {
+      console.log("form clicked!", frm);
+    });
+
+    console.log("frm:", frm);
+
+    const div = document.getElementsByTagName("div")[0];
+    console.log("div:", div);
+
+    const btn = document.getElementById("btn");
+    console.log("btn:", btn);
+
+    [frm, div, btn].forEach((dom) => {
+      dom.addEventListener("click", (evt) => {
+        evt.preventDefault();
+        console.log(dom, evt.target, evt.currentTarget);
+      });
+    });
+  </script>
+</html>

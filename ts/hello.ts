@@ -46,4 +46,3 @@ cust = {
   discountRate: 0.1,
 };
 mg = cust;
-m = cust;

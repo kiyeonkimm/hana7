@@ -2,7 +2,7 @@ function add(a: number, b: number) {
   return a + b;
 }
 
-const s: string = "abc";
+//const s: string = "abc";
 
 const add2 = (a: number, b: number): number => a + b;
 const add3 = (a: number, b: number) => a + b;
@@ -58,3 +58,26 @@ const afactorial = (n: number): number => {
 };
 
 const af = (n: number): number => (n <= 1 ? n : n * af(n - 1));
+
+let singer: (song: string) => string;
+
+singer = function (song) {
+  // song : string의 타입
+  return `Singing : ${song.toUpperCase()}!`; // OK
+};
+
+//------------------
+function tfn(this: { id: number }, x: string) {
+  console.log("tfn>>", this.id);
+}
+
+tfn.bind({ id: 1 })("X");
+
+const t = setTimeout(console.log, 1000, "1");
+
+const a: number[] = [];
+a[100].toFixed();
+
+const b = [4, 5, "6"];
+const c = [...a, ...b];
+//const d = a.concat(b);

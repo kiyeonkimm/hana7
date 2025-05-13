@@ -54,6 +54,7 @@ function App() {
 
   const addItem = (name: string, price: number) => {
     const id = Math.max(...session.cart.map(item => item.id), 0) + 1;
+    console.log('🚀 name:', id, name, price);
     setSession({ ...session, cart: [...session.cart, { id, name, price }] });
   };
 

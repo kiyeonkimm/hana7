@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import './App.css';
-import Hello from './components/Hello';
+import Hello, { type HelloHandler } from './components/Hello';
 import My from './components/My';
+import type { LoginHandler } from './components/Login';
 
 export type LoginUser = {
   id: number;
@@ -34,10 +35,19 @@ const SampleSession: Session = {
 function App() {
   const [session, setSession] = useState<Session>(SampleSession);
   const [count, setCount] = useState(0);
+  const helloButtonRef = useRef<HTMLButtonElement>(null);
+  const logoutButtonRef = useRef<HTMLButtonElement>(null);
+  const helloHandlerRef = useRef<HelloHandler>(null);
+
+  const loginHandlerRef = useRef<LoginHandler>(null);
 
   const plusCount = () => setCount(c => c + 1);
   const login = (id: number, name: string) => {
-    setSession({ ...session, loginUser: { id, name } });
+    if (!loginHandlerRef.current) return;
+    const { getName, validate, str, focusId } = loginHandlerRef.current;
+    console.log('login>>>>', getName(), str);
+    if (validate()) setSession({ ...session, loginUser: { id, name } });
+    else focusId();
   };
 
   const logout = () => {
@@ -77,10 +87,28 @@ function App() {
         removeItem={removeItem}
         addItem={addItem}
         editItem={editItem}
+        logoutButtonRef={logoutButtonRef}
+        loginHandlerRef={loginHandlerRef}
       />
-      <Hello name={'홍길동'} age={33} plusCount={plusCount}>
+      <Hello
+        name={'홍길동'}
+        age={33}
+        plusCount={plusCount}
+        helloButtonRef={helloButtonRef}
+        refx={helloHandlerRef}
+      >
         반갑습니다!
       </Hello>
+      <button onClick={() => helloButtonRef.current?.click()}>
+        Click Hello
+      </button>
+      <button onClick={() => logoutButtonRef.current?.click()}>
+        Logout in App
+      </button>
+
+      <button onClick={() => console.log(helloHandlerRef.current?.xx)}>
+        sayHello
+      </button>
     </>
   );
 }

@@ -34,17 +34,7 @@ export default function Hello({
   // const { plusCount } = useCounter();
   const { plusCount } = use(CounterContext);
   const [reloadFlag, toggleReload] = useToggle();
-
-  const helloHandler = {
-    xx: 'XXXX',
-    sayHello() {
-      alert(`Hello, Mr.${name}!`);
-    },
-  };
-
-  // refx.current = helloHandler;
-  useImperativeHandle(refx, () => helloHandler);
-
+  
   const {
     data: user,
     isLoading,
@@ -53,6 +43,15 @@ export default function Hello({
     id,
     reloadFlag,
   ]);
+
+  useImperativeHandle(refx, () => ({
+    xx: 'XXXX',
+    sayHello() {
+      alert(`Hello, Mr.${user?.name || 'Unknown'}!`);
+    },
+  }), [user]);
+  
+
 
   return (
     <div className='border'>
@@ -63,7 +62,7 @@ export default function Hello({
       <div>
         {children} ({id})
       </div>
-      <button ref={helloButtonRef} onClick={plusCount}>
+      <button ref={helloButtonRef} onClick={() => plusCount()}>
         count + 1
       </button>
       <button onClick={toggleReload}>Reload</button>

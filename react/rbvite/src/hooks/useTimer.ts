@@ -1,5 +1,15 @@
 import { useEffect, useRef } from 'react';
 
+export const useDebounce = <T extends (...args: Parameters<T>) => ReturnType<T>>(
+  cb: T,
+  delay: number,
+  depArr: unknown[],
+  ...args: Parameters<T>
+) => {
+  const {reset} = useTimeout(cb, delay, ...args);
+  useEffect(() => reset(), depArr)
+  };
+
 export const useTimeout = <T extends (...args: Parameters<T>) => ReturnType<T>>(
   cb: T,
   delay: number,

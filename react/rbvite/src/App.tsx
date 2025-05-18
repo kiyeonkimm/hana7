@@ -30,8 +30,7 @@ function App() {
       </SessionProvider>
 
       <Hello
-        name={'홍길동'}
-        age={33}
+        id={count + 1}
         helloButtonRef={helloButtonRef}
         refx={helloHandlerRef}
       >
@@ -44,9 +43,10 @@ function App() {
         Logout in App
       </button>
 
-      <button onClick={() => console.log(helloHandlerRef.current?.xx)}>
-        sayHello
+      <button onClick={() => helloHandlerRef.current?.sayHello()}>
+      sayHello
       </button>
+
     </>
   );
 }

@@ -82,7 +82,7 @@ export default function My({ logoutButtonRef }: Props) {
             
             return (
               <>
-      {loginUser ? <Profile logoutButtonRef={logoutButtonRef} /> : <Login />}
+      {loginUser ? <Profile logoutButtonRef={logoutButtonRef} /> : <Login title={'Login title'} />}
       <MemoColorTitle color={cart.length % 2 === 1 ? 'pink' : 'purple'}>
         Total: {totalPrice.toLocaleString()}
       </MemoColorTitle>

@@ -24,7 +24,6 @@ function App() {
   return (
     <>
       <h2>count: {count}</h2>
-
       <SessionProvider>
         <My logoutButtonRef={logoutButtonRef} />
       </SessionProvider>

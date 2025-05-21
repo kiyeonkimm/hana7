@@ -99,9 +99,10 @@ export default function SessionProvider({ children }: PropsWithChildren) {
 
   const addItem = (name: string, price: number) => {
     const id = Math.max(...session.cart.map(item => item.id), 0) + 1;
-    // setSession({ ...session, cart: [...session.cart, { id, name, price }] });
-    dispatch({ type: 'ADD-ITEM', payload: { id, name, price } });
+    const newItem: Cart = { id, name, price, count: 1 }; // ✅ count 추가
+    dispatch({ type: 'ADD-ITEM', payload: newItem });
   };
+  
 
   const editItem = (workingItem: Cart) => {
     // setSession({

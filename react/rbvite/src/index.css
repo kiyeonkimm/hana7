@@ -84,3 +84,11 @@ ul{
 .w-sm {
   width: 5rem;
 }
+
+.red {
+  color: red;
+}
+
+.blue { 
+  color: blue;
+}

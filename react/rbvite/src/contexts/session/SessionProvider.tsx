@@ -68,9 +68,7 @@ export default function SessionProvider({ children }: PropsWithChildren) {
 
   const { data } = useFetch<Cart[]>('apis/sample.json');
   useEffect(() => {
-    // console.log('🚀 session.cart:', session.cart);
     if (session.cart.length || !data) return;
-    // console.log('🚀 data22:', data);
     dispatch({ type: 'INITIALIZE', payload: data ?? [] });
   }, [data, session.cart]);
 
@@ -116,7 +114,7 @@ export default function SessionProvider({ children }: PropsWithChildren) {
   };
 
   return (
-    <SessionContext.Provider
+    <SessionContext
       value={{
         session,
         login,
@@ -128,6 +126,6 @@ export default function SessionProvider({ children }: PropsWithChildren) {
       }}
     >
       {children}
-    </SessionContext.Provider>
+    </SessionContext>
   );
 }

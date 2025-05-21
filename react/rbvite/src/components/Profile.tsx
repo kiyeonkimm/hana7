@@ -1,7 +1,7 @@
 import { useEffect, type RefObject } from 'react';
 import { useSession } from '../contexts/session/SessionContext';
 import Trans from './Trans';
-import Post from './Post';
+import Post from './Posts';
 
 type Props = {
   logoutButtonRef: RefObject<HTMLButtonElement | null>;

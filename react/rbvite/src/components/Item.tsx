@@ -46,10 +46,7 @@ export default function Item({ addExpectPrice, toggleAdding }: Props) {
 
     const { id } = item;
     if (id) {
-      editItem({
-        id, name, price: +price,
-        count: 0
-      });
+      editItem({ id, name, price: +price });
     } else {
       addItem(name, +price);
       if (toggleAdding) toggleAdding();

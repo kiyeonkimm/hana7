@@ -81,6 +81,9 @@ ul{
   margin-right: .5rem;
 }
 
+.m-1{
+  margin: 1rem;
+}
 .w-sm {
   width: 5rem;
 }

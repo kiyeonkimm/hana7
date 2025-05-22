@@ -20,9 +20,10 @@ export default function ItemDetail() {
 
   return (
     <>
-      <h3>ItemDetail: 금액: {item.price.toLocaleString()}</h3>
+      <h3>🔎ItemDetail- 금액: {item.price.toLocaleString()}원</h3>
       <Link to ='/items'>목록</Link>
-      <Link to ='/edit'>수정하기</Link>
+      <div></div>
+      <Link to ='./edit'>수정하기</Link>
     </>
   );
 }

@@ -39,7 +39,7 @@ const reducer = (session: Session, { type, payload }: Action) => {
       cart = [...session.cart, payload];
       break;
     case 'EDIT-ITEM':
-      cart = session.cart.filter(item =>
+      cart = session.cart.map(item =>
         item.id === payload.id ? payload : item
       );
       break;
@@ -99,10 +99,9 @@ export default function SessionProvider({ children }: PropsWithChildren) {
 
   const addItem = (name: string, price: number) => {
     const id = Math.max(...session.cart.map(item => item.id), 0) + 1;
-    const newItem: Cart = { id, name, price, count: 1 }; // ✅ count 추가
-    dispatch({ type: 'ADD-ITEM', payload: newItem });
+    // setSession({ ...session, cart: [...session.cart, { id, name, price }] });
+    dispatch({ type: 'ADD-ITEM', payload: { id, name, price } });
   };
-  
 
   const editItem = (workingItem: Cart) => {
     // setSession({

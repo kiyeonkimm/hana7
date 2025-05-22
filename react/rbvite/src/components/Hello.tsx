@@ -1,6 +1,6 @@
 import {
-  use,
   useImperativeHandle,
+  useContext,
   type ForwardedRef,
   type PropsWithChildren,
   type RefObject,
@@ -31,10 +31,9 @@ export default function Hello({
   children,
   refx,
 }: PropsWithChildren<Props>) {
-  // const { plusCount } = useCounter();
-  const { plusCount } = use(CounterContext);
+  const { plusCount } = useContext(CounterContext); // ✅ use 대신 useContext 사용
   const [reloadFlag, toggleReload] = useToggle();
-  
+
   const {
     data: user,
     isLoading,
@@ -44,14 +43,16 @@ export default function Hello({
     reloadFlag,
   ]);
 
-  useImperativeHandle(refx, () => ({
-    xx: 'XXXX',
-    sayHello() {
-      alert(`Hello, Mr.${user?.name || 'Unknown'}!`);
-    },
-  }), [user]);
-  
-
+  useImperativeHandle(
+    refx,
+    () => ({
+      xx: 'XXXX',
+      sayHello() {
+        alert(`Hello, Mr.${user?.name || 'Unknown'}!`);
+      },
+    }),
+    [user]
+  );
 
   return (
     <div className='border'>

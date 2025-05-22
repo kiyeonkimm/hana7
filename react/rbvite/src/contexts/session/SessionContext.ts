@@ -7,7 +7,6 @@ export type LoginUser = {
 };
 
 export type Cart = {
-  count: number;
   id: number;
   name: string;
   price: number;

@@ -19,7 +19,7 @@ export default function ItemDetailLayout() {
 
   return (
     <>
-      <h3>DetailLayout(사품명): {item.name}</h3>
+      <h3>DetailLayout(상품명): {item.name}</h3>
       <div>
         <Outlet context={{ curItem: item }} />
       </div>

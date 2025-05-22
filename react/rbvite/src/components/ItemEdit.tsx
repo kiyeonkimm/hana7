@@ -18,7 +18,7 @@ export default function ItemEdit() {
     priceRef.current.value = curItem.price.toString();
     nameRef.current.select();
     nameRef.current.focus();
-  }, []);
+  }, );
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -44,7 +44,6 @@ export default function ItemEdit() {
       return;
     }
 
-    // eslint-disable-next-line react-hooks/react-compiler
     curItem.name = name;
     curItem.price = Number(price);
     editItem({ ...curItem });

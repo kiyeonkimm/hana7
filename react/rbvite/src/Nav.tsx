@@ -44,7 +44,7 @@ export default function Nav() {
           <NavLink to='/hello'>About</NavLink>
         </li>
         <li>
-          <NavLink to='/sadfdsafafds'>NotFound</NavLink>
+          <NavLink to='/notfound'>NotFound</NavLink>
         </li>
       </ul>
     </>
